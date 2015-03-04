@@ -1,9 +1,3 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -86,6 +80,4 @@ export INCLUDE_DIR=$INCLUDE_DIR:/usr/include/
 
 export Blitz_INCLUDE_DIR=/usr
 
-# add plstm
-export PATH=$PATH:~/Tools/friclib_temporal/friclib/parallel_lstm/
 
