@@ -16,13 +16,17 @@ setopt CLOBBER
 # list only directories
 alias lsd='ls -1 -d *(/)' 
 alias lsp='ls -l -d *.py'
-alias notebook='ipython notebook --pylab=inline'
+# alias notebook='ipython notebook --pylab=inline'
+alias notebook='ipython notebook'
 alias zin='sudo zypper install'
 alias zup='sudo zypper update'
 alias zse='sudo zypper search'
 
 # server
 # write alias to the servers
+alias iupr-serv4='.....INSERT.....'
+alias sci='.....INSERT.....'
+alias rhrk='.....INSERT.....'
 
 # git alias
 alias g='git'
@@ -38,6 +42,8 @@ alias got='git '
 alias get='git '
 
 . /home/federico/Tools/powerline/powerline/bindings/zsh/powerline.zsh
+
+export LD_LIBRARY_PATH=/opt/OpenBLAS/lib/:$LD_LIBRARY_PATH
 
 alias eclipse='~/eclipse/eclipse'
 
@@ -57,13 +63,13 @@ export PATH=$PATH:/usr/local/bin/luajit
 export PATH=$PATH:/home/federico/htk
 
 # add luarocks
-export PATH=$PATH:/usr/local/bin/luarocks:/usr/local/etc/luarocks:/usr/local/lib/luarocks
+# export PATH=$PATH:/usr/local/bin/luarocks:/usr/local/etc/luarocks:/usr/local/lib/luarocks
 
 # add gfx  
-export PATH=$PATH:/usr/bin/gfx
+# export PATH=$PATH:/usr/bin/gfx
 
 # add node
-export PATH=$PATH:/usr/bin/node:/usr/bin/npm:/usr/bin/X11/npm
+# export PATH=$PATH:/usr/bin/node:/usr/bin/npm:/usr/bin/X11/npm
  
 # clear the screen
 alias c='clear' 
@@ -73,11 +79,22 @@ alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 
 # reboot
-alias halt='sudo /sbin/halt'
-alias shutdown='sudo /sbin/shutdown'
+alias reboot='sudo /sbin/shutdown -r now'
+alias shutdown='sudo /sbin/shutdown -P now'
 
 export INCLUDE_DIR=$INCLUDE_DIR:/usr/include/
 
 export Blitz_INCLUDE_DIR=/usr
 
+export PATH=/home/federico/torch/install/bin:$PATH
+export LD_LIBRARY_PATH=/home/federico/torch/install/lib:$LD_LIBRARY_PATH 
+export DYLD_LIBRARY_PATH=/home/federico/torch/install/lib:$DYLD_LIBRARY_PATH
 
+
+# Mounting external drive
+alias mounting_hd='sudo mount /dev/sdb5 /media/external_disk/'
+
+export POWERLINE_CONFIG_COMMAND=/home/federico/Tools/powerline/build/scripts-2.7/powerline-config
+
+# Fix solarize vim in TMUX
+alias tmux="TERM=screen-256color-bce tmux"

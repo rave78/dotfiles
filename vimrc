@@ -2,14 +2,14 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=/home/federico/.vim/bundle/vundle/
+set rtp+=/home/federico/.vim/bundle/Vundle.vim/
 set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
 
-call vundle#rc()
-call pathogen#infect()
+call vundle#begin()
+" call vundle#rc()
+" call pathogen#infect()
 
 let g:vundle_default_git_proto='git'
-
 
 " let Vundle manage Vundle, required
 Bundle 'gmarik/vundle'
@@ -23,11 +23,9 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'wincent/Command-T'
-" Bundle 'mikewest/vimroom'
 Bundle 'scrooloose/nerdtree'
 
-" VIMROOM
-nnoremap <silent> <leader>m <Plug>VimroomToggle
+call vundle#end()
 
 " Basic setting based on jeff knupp
 syntax on " syntax highlighing
@@ -54,7 +52,7 @@ let g:solarized_termcolors=256
 colorscheme solarized
 
 if has('gui_running')
-    set background=light
+    set background=dark
 else
     set background=light
 endif
