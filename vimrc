@@ -2,44 +2,78 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=/home/federico/.vim/bundle/vundle/
-set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
+set rtp+=/home/federico/.vim/bundle/Vundle.vim/
+"set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
 
 call vundle#rc()
-call pathogen#infect()
+" call pathogen#infect()
 
 let g:vundle_default_git_proto='git'
 
 
 " let Vundle manage Vundle, required
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-repeat'
 Bundle 'kien/ctrlp.vim'
+Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'sjl/gundo.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'wincent/Command-T'
-" Bundle 'mikewest/vimroom'
 Bundle 'scrooloose/nerdtree'
+Bundle 'xolox/vim-lua-ftplugin'
+Bundle 'xolox/vim-misc'
+Bundle 'jakezhaojb/vim-torch-snipmate'
+Bundle 'jnurmine/Zenburn'
+Bundle 'pbrisbin/vim-mkdir'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-eunuch'
 
-" VIMROOM
-nnoremap <silent> <leader>m <Plug>VimroomToggle
+" Bundle 'powerline/powerline'
+Bundle 'Xuyuanp/nerdtree-git-plugin'
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
+let g:airline_powerline_fonts = 1
 
 " Basic setting based on jeff knupp
+" set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
+
 syntax on " syntax highlighing
 filetype on " try to detect filetypes
 filetype plugin indent on " enable loading indent file for filetype
 set number " Display line numbers
-set background=dark " We are using dark background in vim
 set title " show title in console title bar
 set wildmenu " Menu completion in command mode on <Tab>
 set wildmode=full " <Tab> cycles between all matching choices.
-set guifont=MyFont\ for\ Powerline
-let g:Powerline_symbols = 'fancy'
+" set guifont=MyFont\ for\ Powerline
+"let g:Powerline_symbols = 'fancy'
+
+" syntastic recommendation                                                                                                                                  
+set statusline+=%#warningmsg#                                                                                                                               
+set statusline+=%{SyntasticStatuslineFlag()}                                                                                                                
+set statusline+=%*                                                                                                                                          
+let g:syntastic_always_populate_loc_list = 1                                                                                                                
+let g:syntastic_auto_loc_list = 1                                                                                                                           
+let g:syntastic_check_on_open = 1                                                                                                                           
+let g:syntastic_check_on_wq = 0
+
 
 " Powerline color term
 set t_Co=256
@@ -51,17 +85,24 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 
 " Solarized color scheme
 let g:solarized_termcolors=256
-colorscheme solarized
+"colorscheme solarized
 
 if has('gui_running')
-    set background=light
+    "set guifont=Monaco:h12
+    "set guioptions=ctm
+    set guifont=DejaVu\ Sans:s10
+    set background=dark
+    set encoding=utf-8
+    colorscheme solarized
 else
+    colorscheme solarized
     set background=light
+    "colorscheme zenburn
 endif
 
 " To save, ctrl-a
-nmap <c-a> :w<CR>
-imap <c-a> <Esc>:w<CR>a
+nmap <c-q> :w<CR>
+imap <c-q> <Esc>:w<CR>a
 
 " vim-markdown
 let g:vim_markdown_folding_disabled=1
@@ -97,13 +138,17 @@ set vb t_vb=
 
 
 """ Python Configuration
+" Auto-complete
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 
 " Load pylint code plugin
 let g:pymode_lint = 1
 
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
 " Can have multiply values "pep8,pyflakes,mcccabe"
-let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_checker = "flake8,pep8"
 
 " Skip errors and warnings
 " E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors startswith E2) and etc
@@ -196,3 +241,16 @@ let g:pymode_syntax_builtin_funcs = g:pymode_syntax_all
 
 " Highlight exceptions
 let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
+
+" NERDtree
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+map <C-n> :NERDTreeToggle<CR>
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeShowBookmarks=1
