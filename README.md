@@ -1,5 +1,6 @@
 # dotfiles
 
-My configuration files for 
+My configuration files for
 - vim
 - zhs
+- tmux
