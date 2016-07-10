@@ -3,13 +3,19 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=/home/federico/.vim/bundle/Vundle.vim/
+<<<<<<< HEAD
 "set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
 
 call vundle#rc()
+=======
+set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
+
+call vundle#begin()
+" call vundle#rc()
+>>>>>>> 3b406733a2895bf96e4df251ad209ceebedfe155
 " call pathogen#infect()
 
 let g:vundle_default_git_proto='git'
-
 
 " let Vundle manage Vundle, required
 Bundle 'gmarik/Vundle.vim'
@@ -25,6 +31,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'wincent/Command-T'
 Bundle 'scrooloose/nerdtree'
+<<<<<<< HEAD
 Bundle 'xolox/vim-lua-ftplugin'
 Bundle 'xolox/vim-misc'
 Bundle 'jakezhaojb/vim-torch-snipmate'
@@ -51,6 +58,10 @@ let g:NERDTreeIndicatorMapCustom = {
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
+=======
+
+call vundle#end()
+>>>>>>> 3b406733a2895bf96e4df251ad209ceebedfe155
 
 " Basic setting based on jeff knupp
 " set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
@@ -88,12 +99,16 @@ let g:solarized_termcolors=256
 "colorscheme solarized
 
 if has('gui_running')
+<<<<<<< HEAD
     "set guifont=Monaco:h12
     "set guioptions=ctm
     set guifont=DejaVu\ Sans:s10
     set background=dark
     set encoding=utf-8
     colorscheme solarized
+=======
+    set background=dark
+>>>>>>> 3b406733a2895bf96e4df251ad209ceebedfe155
 else
     colorscheme solarized
     set background=light
