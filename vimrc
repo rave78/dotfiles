@@ -3,13 +3,12 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=/home/federico/.vim/bundle/Vundle.vim/
-"set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
+" set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
 
 call vundle#rc()
 " call pathogen#infect()
 
 let g:vundle_default_git_proto='git'
-
 
 " let Vundle manage Vundle, required
 Bundle 'gmarik/Vundle.vim'
@@ -33,27 +32,17 @@ Bundle 'pbrisbin/vim-mkdir'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-eunuch'
+Bundle 'christoomey/vim-tmux-navigator'
 
-" Bundle 'powerline/powerline'
+Bundle 'powerline/powerline'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
-
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
+
 let g:airline_powerline_fonts = 1
 
 " Basic setting based on jeff knupp
-" set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
+"set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
 
 syntax on " syntax highlighing
 filetype on " try to detect filetypes
@@ -63,7 +52,7 @@ set title " show title in console title bar
 set wildmenu " Menu completion in command mode on <Tab>
 set wildmode=full " <Tab> cycles between all matching choices.
 " set guifont=MyFont\ for\ Powerline
-"let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'fancy'
 
 " syntastic recommendation                                                                                                                                  
 set statusline+=%#warningmsg#                                                                                                                               
@@ -81,6 +70,7 @@ set encoding=utf-8
 
 " Useful settings in powerline status
 set laststatus=2 " Always display the statusline in all windows
+set showtabline=2
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 " Solarized color scheme
@@ -131,17 +121,14 @@ set textwidth=80 " lines are automatically wrapped after 80 columns
 set nofoldenable " turn off folding
 set colorcolumn=80 " highlight column 80 (where words will wrap)
 
- 
 " don't bell or blink
 set noerrorbells
 set vb t_vb=
-
 
 """ Python Configuration
 " Auto-complete
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 
 " Load pylint code plugin
 let g:pymode_lint = 1
@@ -251,6 +238,27 @@ map <C-n> :NERDTreeToggle<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-let NERDTreeShowBookmarks=1
+let g:NERDTreeShowBookmarks=1
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+let g:tmux_navigator_save_on_switch = 1
