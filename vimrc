@@ -32,12 +32,27 @@ Bundle 'pbrisbin/vim-mkdir'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-commentary'
 Bundle 'christoomey/vim-tmux-navigator'
-
+Bundle 'kana/vim-textobj-user'
 Bundle 'powerline/powerline'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
+Bundle 'bps/vim-textobj-python'
+Bundle 'Raimondi/delimitMate'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+Bundle 'easymotion/vim-easymotion'
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"
+" " If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 let g:airline_powerline_fonts = 1
 
@@ -53,6 +68,8 @@ set wildmenu " Menu completion in command mode on <Tab>
 set wildmode=full " <Tab> cycles between all matching choices.
 " set guifont=MyFont\ for\ Powerline
 let g:Powerline_symbols = 'fancy'
+
+map <leader>rr :source ~/.vimrc<CR> 
 
 " syntastic recommendation                                                                                                                                  
 set statusline+=%#warningmsg#                                                                                                                               
