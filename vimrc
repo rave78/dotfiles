@@ -4,6 +4,7 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=/home/federico/.vim/bundle/Vundle.vim/
 " set rtp+=/home/federico/Tools/powerline/powerline/bindings/vim
+set rtp+=~/.fzf
 
 call vundle#rc()
 " call pathogen#infect()
@@ -44,6 +45,8 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'easymotion/vim-easymotion'
+Bundle 'szw/vim-maximizer'
+Bundle 'christoomey/vim-system-copy'
 
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
@@ -247,7 +250,6 @@ let g:pymode_syntax_builtin_funcs = g:pymode_syntax_all
 let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
 
 " NERDtree
-
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
@@ -273,9 +275,40 @@ let g:NERDTreeShowBookmarks=1
 
 let g:tmux_navigator_no_mappings = 1
 
+let g:textobj_python_no_default_key_mappings = 1
+
+call textobj#user#map('python', {
+      \   'class': {
+      \     'select-a': '<buffer>ac',
+      \     'select-i': '<buffer>ic',
+      \     'move-n': '<buffer>]pc',
+      \     'move-p': '<buffer>[pc',
+      \   },
+      \   'function': {
+      \     'select-a': '<buffer>af',
+      \     'select-i': '<buffer>if',
+      \     'move-n': '<buffer>]pf',
+      \     'move-p': '<buffer>[pf',
+      \   }
+      \ })
+
+xmap aF <Plug>(textobj-python-function-a)
+omap aF <Plug>(textobj-python-function-a)
+xmap iF <Plug>(textobj-python-function-i)
+omap iF <Plug>(textobj-python-function-i)
+
 nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
 nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
 nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
 nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
 nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 let g:tmux_navigator_save_on_switch = 1
+
+"INSERT TEMPLATE 
+autocmd bufnewfile *.py so ~/Tools/vim_templates/python_skeleton.txt
+autocmd bufnewfile *.sh so ~/Tools/vim_templates/bash_skeleton.txt
+" autocmd bufnewfile *.c exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
+" autocmd bufnewfile *.c exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+" autocmd Bufwritepre,filewritepre *.c execute "normal ma"
+" autocmd Bufwritepre,filewritepre *.c exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+" autocmd bufwritepost,filewritepost *.c execute "normal `a"
