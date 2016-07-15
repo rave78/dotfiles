@@ -1,5 +1,5 @@
-#! /bin/bash
-
+#! /usr/bin/env zsh
+source ~/.zshrc
 rsync-copy ./zshrc ~/.zshrc
 rsync-copy ./tmux.conf ~/.tmux.conf
 rsync-copy ./zpreztorc ~/.zpreztorc
