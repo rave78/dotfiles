@@ -28,18 +28,19 @@ alias iupr-serv4='.....INSERT.....'
 alias sci='.....INSERT.....'
 alias rhrk='.....INSERT.....'
 
-# git alias
-alias g='git'
-alias gs='git status '
-alias ga='git add '
-alias gb='git branch '
-alias gc='git commit'
-alias gd='git diff'
-alias gk='gitk --all&'
-alias gx='gitx --all'
 
-alias got='git '
-alias get='git '
+# vim
+alias vim='nvim'
+alias ev='vim ~/.config/nvim/init.vim'
+alias et='vim ~/.tmux.conf'
+alias ez='vim ~/.zshrc'
+alias ezp='vim ~/.zpreztorc'
+
+# fzf
+alias vo='vim $(fzf)'
+#
+# # source
+alias sz='source ~/.zshrc'
 
 . /home/federico/Tools/powerline/powerline/bindings/zsh/powerline.zsh
 
@@ -86,15 +87,17 @@ export INCLUDE_DIR=$INCLUDE_DIR:/usr/include/
 
 export Blitz_INCLUDE_DIR=/usr
 
-export PATH=/home/federico/torch/install/bin:$PATH
+export PATH=/home/federico/torch/install/bin:~/Tools/tmuxinator/bin:$PATH
 export LD_LIBRARY_PATH=/home/federico/torch/install/lib:$LD_LIBRARY_PATH 
 export DYLD_LIBRARY_PATH=/home/federico/torch/install/lib:$DYLD_LIBRARY_PATH
 
-
+source ~/.bin/tmuxinator.zsh
+ 
 # Mounting external drive
 alias mounting_hd='sudo mount /dev/sdb5 /media/external_disk/'
 
 export POWERLINE_CONFIG_COMMAND=/home/federico/Tools/powerline/build/scripts-2.7/powerline-config
 
 # Fix solarize vim in TMUX
-alias tmux="TERM=screen-256color-bce tmux"
+export TERM=screen-256color-bce
+source ~/.fzf.zsh

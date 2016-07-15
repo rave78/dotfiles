@@ -99,20 +99,19 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 
 " Solarized color scheme
 let g:solarized_termcolors=256
-"colorscheme solarized
+colorscheme solarized
 
-if has('gui_running')
-    "set guifont=Monaco:h12
-    "set guioptions=ctm
-    set guifont=DejaVu\ Sans:s10
-    set background=dark
-    set encoding=utf-8
-    colorscheme solarized
-else
-    colorscheme solarized
-    set background=light
-    "colorscheme zenburn
-endif
+
+"     "set guioptions=ctm
+"     set guifont=DejaVu\ Sans:s10
+"     set background=dark
+"     set encoding=utf-8
+"     colorscheme solarized
+" else
+"     colorscheme solarized
+"     set background=light
+"     "colorscheme zenburn
+" endif
 
 " To save, ctrl-a
 nmap <c-q> :w<CR>
