@@ -15,6 +15,8 @@ call vundle#rc()
 let g:vundle_default_git_proto='git'
 
 " let Vundle manage Vundle, required
+Bundle 'Yggdroot/indentLine'
+Bundle 'severin-lemaignan/vim-minimap'
 Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tomasr/molokai'
@@ -51,13 +53,36 @@ Bundle 'honza/vim-snippets'
 Bundle 'easymotion/vim-easymotion'
 Bundle 'szw/vim-maximizer'
 Bundle 'christoomey/vim-system-copy'
+Bundle 'majutsushi/tagbar'
+Bundle 'ervandew/supertab'
+Bundle 'wikitopian/hardmode'
+Bundle 'ekalinin/Dockerfile.vim'
+nmap <F8> :TagbarToggle<CR>
+
+map <Leader> <Plug>(easymotion-prefix)
+
+
+" changing default of command-t
+map <Leader>m <Plug>(CommandT)
+nnoremap <silent> <Leader>t <Plug>(CommandT)
+nnoremap <silent> <Leader>b <Plug>(CommandTBuffer)
+nnoremap <silent> <Leader>j <Plug>(CommandTJump)
+
 
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"
+
+" YouCompleteMe and UltiSnips compatibility, with the helper of supertab
+" (via http://stackoverflow.com/a/22253548/1626737)" 
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+
+let g:SuperTabCrMapping                = 0
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+
 " " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -102,21 +127,25 @@ let g:solarized_termcolors=256
 "colorscheme solarized
 
 if has('gui_running')
-    "set guifont=Monaco:h12
-    "set guioptions=ctm
+    set guifont=Monaco:h12
+    set guioptions=ctm
     set guifont=DejaVu\ Sans:s10
-    set background=dark
-    set encoding=utf-8
     colorscheme solarized
+    set background=light
+    "set encoding=utf-8
 else
     colorscheme solarized
     set background=light
     "colorscheme zenburn
 endif
 
-" To save, ctrl-a
-nmap <c-q> :w<CR>
-imap <c-q> <Esc>:w<CR>a
+" To save, ctrl-s
+nmap <C-e> :w <CR>
+imap <c-e> <ESC>:w<CR>a
+
+" To save, ctrl-x
+nmap <C-x>:x! <CR>
+imap <C-x> <ESC>:x! <CR>
 
 " vim-markdown
 let g:vim_markdown_folding_disabled=1
@@ -257,6 +286,8 @@ let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
 autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Jump to the main window.
+autocmd VimEnter * wincmd p
 
 map <C-n> :NERDTreeToggle<CR>
 
@@ -279,8 +310,6 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeShowBookmarks=1
 
 let g:tmux_navigator_no_mappings = 1
-
-
 
 " xmap aF <Plug>(textobj-python-function-a)
 " omap aF <Plug>(textobj-python-function-a)
@@ -318,3 +347,6 @@ call textobj#user#map('python', {
 \     'move-p': '<buffer>[pf',
 \   }
 \ })
+
+" IndentLine
+let g:indentLine_setColors = 0

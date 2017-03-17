@@ -5,8 +5,8 @@
 """
 (Short Description).
 
-__author__ = "Federico Raue"
-__email__ = "federico.raue@gmail.com"
+__author__ = ""
+__email__ = ""
 
 __date__ = 
 

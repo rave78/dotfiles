@@ -101,3 +101,9 @@ export POWERLINE_CONFIG_COMMAND=/home/federico/Tools/powerline/build/scripts-2.7
 # Fix solarize vim in TMUX
 export TERM=screen-256color-bce
 source ~/.fzf.zsh
+
+# anaconda2
+PATH=/home/federico/anaconda2/bin:$PATH
+
+# nvim
+PATH=/usr/bin/nvim:$PATH
